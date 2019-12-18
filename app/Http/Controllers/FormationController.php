@@ -19,7 +19,7 @@ class FormationController extends Controller {
         // $formations = Formation::all(); si on n'utilise pas la 
         $query = $slug ? Categorie::whereSlug($slug)->firstOrFail()->formations() : Formation::query();
         //$formations = $query->withTrashed()->oldest('nomformation')->paginate(15);
-        $formations = $query->oldest('nomformation')->paginate(15);
+        $formations = $query->oldest('id')->paginate(15);
         $categories = Categorie::all();
         return view('index', compact('formations', 'categories', 'slug'));
     }
